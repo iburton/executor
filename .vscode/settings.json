@@ -1,0 +1,17 @@
+{
+  "editor.tabSize": 2,
+  "editor.tabCompletion": "on",
+  "editor.detectIndentation": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.probe": ["javascript", "typescript", "html", "markdown", "svelte"],
+  "eslint.debug": true,
+  "eslint.validate": ["javascript", "typescript", "html", "markdown", "svelte"],
+  "todo-tree.tree.showBadges": true,
+  "todo-tree.tree.showCountsInTree": true
+}
