@@ -16,11 +16,15 @@
         "files": ["**/*.svelte"],
         "processor": "svelte3/svelte3",
         "rules": {
-          "import/first": "off"
+          "import/first": "off",
+          "import/prefer-default-export": "off",
+          "import/no-mutable-exports": "off"
         }
       }
     ],    
     "rules": {
+      "semi": ["warn", "never"],
+      "object-curly-newline": ["warn", { "multiline": true }]      
     },
     "ignorePatterns": ["public/build/**/*"]
 }
