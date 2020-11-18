@@ -1,30 +1,37 @@
+<!------------------------------------------------------------------------------------------------
+  -- Base Application Component                                                                 --
+  ----------------------------------------------------------------------------------------------->
+
 <script>
-	export let name;
+  import { onMount, onDestroy } from 'svelte'
+  import { Router } from 'svelte-router-spa'
+  import routes from './routes'
+
+  import Toast from './components/elements/toast.svelte'
+  import notifications from './stores/store_notification'
+
+  let unsubscribe
+  let toaster
+
+  let child
+
+  onMount(async () => {
+    unsubscribe = notifications.subscribe((value) => {
+      if (value.message != null) {
+        child = new Toast({
+          target: toaster,
+          props: { message: value.message, timer: value.timer },
+        })
+      }
+    })
+  })
+
+  onDestroy(async () => {
+    child = null
+    unsubscribe()
+  })
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
-
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+<div class="top right ui toast-container" bind:this={toaster}>
+</div>
+<Router {routes} />
