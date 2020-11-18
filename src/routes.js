@@ -10,7 +10,8 @@ import LoginPage from './components/pages/login.svelte'
 import LogoutPage from './components/pages/logout.svelte'
 
 const loggedOut = () => currentUser.isLoggedOut()
-const loggedIn = () => currentUser.isLoggedIn()
+// ISPRODUCTION here is replaced with a value from rollup.config.js at build time
+const loggedIn = () => currentUser.isLoggedIn() || 'false' === 'ISPRODUCTION'
 
 const loggedInGuard = { guard: loggedIn, redirect: 'login' }
 const loggedOutGuard = { guard: loggedOut, redirect: 'home' }
